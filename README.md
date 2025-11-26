@@ -1,3 +1,4 @@
+![Badge](https://hitscounter.dev/api/hit?url=https%3A%2F%2Fgithub.com%2Fswarajshaw&label=Profile+Views&icon=person-raised-hand&color=%23198754&message=&style=flat&tz=Europe%2FDublin)
 - 👋 Hi, I’m @swarajshaw
 - 👀 I’m interested in AI/ML and BI Analytics
 - 🌱 I’m currently pursuing Msc. in Artificial Intelligence at Dublin Business School
