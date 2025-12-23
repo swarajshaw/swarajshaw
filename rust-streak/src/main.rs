@@ -1,17 +1,11 @@
-use chrono::{Duration, Utc};
+use chrono::{Duration, NaiveDate, Utc};
 use reqwest::Client;
 use serde::Deserialize;
-use std::collections::{HashMap, HashSet};
+use serde_json::json;
+use std::collections::HashMap;
 use std::fs;
 
 const USERNAME: &str = "swarajshaw";
-
-#[derive(Deserialize)]
-struct Event {
-    #[serde(rename = "type")]
-    event_type: String,
-    created_at: String,
-}
 
 #[derive(Deserialize)]
 struct User {
@@ -25,6 +19,54 @@ struct Repo {
     stargazers_count: u32,
 }
 
+#[derive(Deserialize)]
+struct GraphQlResponse {
+    data: Option<GraphQlData>,
+    errors: Option<Vec<GraphQlError>>,
+}
+
+#[derive(Deserialize)]
+struct GraphQlError {
+    message: String,
+}
+
+#[derive(Deserialize)]
+struct GraphQlData {
+    user: Option<GraphQlUser>,
+}
+
+#[derive(Deserialize)]
+struct GraphQlUser {
+    #[serde(rename = "contributionsCollection")]
+    contributions_collection: ContributionsCollection,
+}
+
+#[derive(Deserialize)]
+struct ContributionsCollection {
+    #[serde(rename = "contributionCalendar")]
+    contribution_calendar: ContributionCalendar,
+}
+
+#[derive(Deserialize)]
+struct ContributionCalendar {
+    #[serde(rename = "totalContributions")]
+    total_contributions: u32,
+    weeks: Vec<ContributionWeek>,
+}
+
+#[derive(Deserialize)]
+struct ContributionWeek {
+    #[serde(rename = "contributionDays")]
+    contribution_days: Vec<ContributionDay>,
+}
+
+#[derive(Deserialize)]
+struct ContributionDay {
+    date: String,
+    #[serde(rename = "contributionCount")]
+    contribution_count: u32,
+}
+
 async fn get_json<T: for<'de> Deserialize<'de>>(
     client: &Client,
     url: String,
@@ -34,11 +76,8 @@ async fn get_json<T: for<'de> Deserialize<'de>>(
         .header("User-Agent", "rust-github-widget")
         .header("Accept", "application/vnd.github+json");
 
-    if let Ok(token) = std::env::var("GITHUB_TOKEN") {
-        let token = token.trim();
-        if !token.is_empty() {
-            req = req.header("Authorization", format!("Bearer {}", token));
-        }
+    if let Some(token) = get_github_token() {
+        req = req.header("Authorization", format!("Bearer {}", token));
     }
 
     let resp = req.send().await?;
@@ -49,6 +88,76 @@ async fn get_json<T: for<'de> Deserialize<'de>>(
     }
 
     Ok(resp.json().await?)
+}
+
+fn get_github_token() -> Option<String> {
+    for key in ["GH_TOKEN", "GITHUB_TOKEN"] {
+        if let Ok(token) = std::env::var(key) {
+            let token = token.trim().to_string();
+            if !token.is_empty() {
+                return Some(token);
+            }
+        }
+    }
+    None
+}
+
+async fn get_contribution_calendar(
+    client: &Client,
+) -> Result<ContributionCalendar, Box<dyn std::error::Error>> {
+    let token = get_github_token()
+        .ok_or("GH_TOKEN or GITHUB_TOKEN is required for GitHub GraphQL API")?;
+
+    let query = r#"
+        query($login: String!) {
+          user(login: $login) {
+            contributionsCollection {
+              contributionCalendar {
+                totalContributions
+                weeks {
+                  contributionDays {
+                    date
+                    contributionCount
+                  }
+                }
+              }
+            }
+          }
+        }
+    "#;
+
+    let resp = client
+        .post("https://api.github.com/graphql")
+        .header("User-Agent", "rust-github-widget")
+        .header("Accept", "application/vnd.github+json")
+        .header("Authorization", format!("Bearer {}", token))
+        .json(&json!({ "query": query, "variables": { "login": USERNAME } }))
+        .send()
+        .await?;
+
+    let status = resp.status();
+    if !status.is_success() {
+        let body = resp.text().await.unwrap_or_default();
+        return Err(format!("GitHub GraphQL error {}: {}", status, body).into());
+    }
+
+    let parsed: GraphQlResponse = resp.json().await?;
+    if let Some(errors) = parsed.errors {
+        let message = errors
+            .into_iter()
+            .map(|e| e.message)
+            .collect::<Vec<_>>()
+            .join("; ");
+        return Err(format!("GitHub GraphQL response error: {}", message).into());
+    }
+
+    let calendar = parsed
+        .data
+        .and_then(|d| d.user)
+        .map(|u| u.contributions_collection.contribution_calendar)
+        .ok_or("GitHub GraphQL response missing contribution data")?;
+
+    Ok(calendar)
 }
 
 #[tokio::main]
@@ -68,32 +177,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let total_stars: u32 = repos.iter().map(|r| r.stargazers_count).sum();
 
-    // ---------- Events ----------
-    let events: Vec<Event> = get_json(
-        &client,
-        format!("https://api.github.com/users/{USERNAME}/events/public"),
-    )
-    .await?;
-
+    // ---------- Contributions (GraphQL) ----------
+    let calendar = get_contribution_calendar(&client).await?;
     let today = Utc::now().date_naive();
 
-    let mut active_days = HashSet::new();
-    let mut daily_commits: HashMap<String, u32> = HashMap::new();
-    let mut total_contributions = 0;
-
-    for e in events {
-        if e.event_type == "PushEvent" {
-            let day = e.created_at[..10].to_string();
-            active_days.insert(day.clone());
-            *daily_commits.entry(day).or_insert(0) += 1;
-            total_contributions += 1;
+    let mut daily_contributions: HashMap<NaiveDate, u32> = HashMap::new();
+    for week in calendar.weeks {
+        for day in week.contribution_days {
+            let date = NaiveDate::parse_from_str(&day.date, "%Y-%m-%d")?;
+            daily_contributions.insert(date, day.contribution_count);
         }
     }
 
     // ---------- Current streak ----------
     let mut current_streak = 0;
     let mut d = today;
-    while active_days.contains(&d.to_string()) {
+    while daily_contributions.get(&d).cloned().unwrap_or(0) > 0 {
         current_streak += 1;
         d -= Duration::days(1);
     }
@@ -101,9 +200,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // ---------- Longest streak ----------
     let mut longest = 0;
     let mut streak = 0;
-    let mut days: Vec<_> = active_days
+    let mut days: Vec<_> = daily_contributions
         .iter()
-        .map(|d| d.parse::<chrono::NaiveDate>().unwrap())
+        .filter_map(|(d, c)| if *c > 0 { Some(*d) } else { None })
         .collect();
     days.sort();
 
@@ -129,7 +228,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     for i in (0..30).rev() {
         let day = today - Duration::days(i);
-        let count = daily_commits.get(&day.to_string()).cloned().unwrap_or(0);
+        let count = daily_contributions.get(&day).cloned().unwrap_or(0);
 
         if count > 0 {
             active_30 += 1;
@@ -245,7 +344,7 @@ Repos {repos} · Stars {stars} · Followers {followers} · Following {following}
         followers = user.followers,
         following = user.following,
         commits_30 = commits_30,
-        total_contributions = total_contributions
+        total_contributions = calendar.total_contributions
     );
 
     fs::write("streak.svg", svg)?;
