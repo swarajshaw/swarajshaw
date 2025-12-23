@@ -1,9 +1,0 @@
-/Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/deps/potential_utf-8771794cdbdf11af.d: /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/lib.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/uchar.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/ustr.rs
-
-/Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/deps/libpotential_utf-8771794cdbdf11af.rlib: /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/lib.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/uchar.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/ustr.rs
-
-/Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/deps/libpotential_utf-8771794cdbdf11af.rmeta: /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/lib.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/uchar.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/ustr.rs
-
-/Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/lib.rs:
-/Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/uchar.rs:
-/Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/potential_utf-0.1.4/src/ustr.rs:
