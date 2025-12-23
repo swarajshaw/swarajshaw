@@ -1,0 +1,14 @@
+/Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/deps/serde-4aaaa7e6f46c4502.d: /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/build/serde-ffe1212ea6083ba8/out/private.rs
+
+/Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/deps/libserde-4aaaa7e6f46c4502.rlib: /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/build/serde-ffe1212ea6083ba8/out/private.rs
+
+/Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/deps/libserde-4aaaa7e6f46c4502.rmeta: /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/build/serde-ffe1212ea6083ba8/out/private.rs
+
+/Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs:
+/Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs:
+/Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs:
+/Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs:
+/Users/swarajshaw/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs:
+/Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/build/serde-ffe1212ea6083ba8/out/private.rs:
+
+# env-dep:OUT_DIR=/Users/swarajshaw/Documents/swarajshaw/rust-streak/target/debug/build/serde-ffe1212ea6083ba8/out
