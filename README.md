@@ -18,9 +18,8 @@ swarajshaw/swarajshaw is a ✨ special ✨ repository because its `README.md` (t
 You can click the Preview link to take a look at your changes.
 --->
 
-![GitHub Activity](https://raw.githubusercontent.com/swarajshaw/swarajshaw/main/rust-streak/streak.svg?v=2)
-SME for phoneset/G2P/TN pipeline, built 14k+ sentence evaluation suite, corrected 14k+ phonetic entries, and helped ship Ray-Ban smart glasses Hindi TTS with 30k+ script evaluations.
-
+- **Meta**
+  SME for phoneset/G2P/TN pipeline, built sentence evaluation suite, corrected phonetic entries, and helped ship Ray-Ban smart glasses Hindi TTS.
 - **Nexus AI Engine (Private)**  
   Architected a monorepo AI platform with FastAPI gateway, Next.js messenger UI, dataset/disti workflows, Prefect orchestration, evaluation suite, and experiments/Launchpad metadata service.
 - **Sorted – Local-First AI File Intelligence (Rust, ONNX, Tauri)**  
