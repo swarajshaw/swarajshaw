@@ -236,11 +236,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
 
         let height = (count.min(5) * 6) + 4;
+        let bar_x = 32 + (29 - i) * 6;
+        let bar_y = 188 - height;
         bars.push_str(&format!(
-            r#"<rect x="{}" y="{}" width="4" height="{}" rx="1"/>"#,
-            24 + (29 - i) * 6,
-            160 - height,
-            height
+            r#"<rect class="bar" x="{}" y="{}" width="4" height="{}" rx="1"/>"#,
+            bar_x, bar_y, height
         ));
     }
 
@@ -329,7 +329,7 @@ text {{
 
 <rect x="32" y="126" width="496" height="62" rx="14" fill="rgba(15,23,42,0.04)"/>
 <line x1="32" y1="188" x2="528" y2="188" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
-<g transform="translate(32,128)">{bars}</g>
+{bars}
 
 <text x="32" y="210" class="small">
 Repos {repos} · Stars {stars} · Followers {followers} · Following {following} · Commits(30d) {commits_30} · Total {total_contributions}
