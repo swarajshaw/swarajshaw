@@ -70,20 +70,20 @@ text {
 <rect x="426" y="22" width="106" height="20" rx="10" fill="url(#spark)" opacity="0.12"/>
 <text x="440" y="36" class="chip">LAST 30D</text>
 
-<text x="32" y="84" class="value">🔥 0</text>
+<text x="32" y="84" class="value">🔥 9</text>
 <text x="32" y="102" class="label">CURRENT STREAK</text>
 
-<text x="176" y="84" class="value">🏆 8</text>
+<text x="176" y="84" class="value">🏆 9</text>
 <text x="176" y="102" class="label">LONGEST</text>
 
-<text x="304" y="84" class="value">📈 18/30</text>
+<text x="304" y="84" class="value">📈 19/30</text>
 <text x="304" y="102" class="label">ACTIVE DAYS</text>
 
 <rect x="32" y="126" width="496" height="62" rx="14" fill="rgba(15,23,42,0.04)"/>
 <line x1="32" y1="188" x2="528" y2="188" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
-<rect class="bar" x="32" y="184" width="4" height="4" rx="1"/><rect class="bar" x="38" y="184" width="4" height="4" rx="1"/><rect class="bar" x="44" y="154" width="4" height="34" rx="1"/><rect class="bar" x="50" y="154" width="4" height="34" rx="1"/><rect class="bar" x="56" y="154" width="4" height="34" rx="1"/><rect class="bar" x="62" y="154" width="4" height="34" rx="1"/><rect class="bar" x="68" y="154" width="4" height="34" rx="1"/><rect class="bar" x="74" y="154" width="4" height="34" rx="1"/><rect class="bar" x="80" y="154" width="4" height="34" rx="1"/><rect class="bar" x="86" y="172" width="4" height="16" rx="1"/><rect class="bar" x="92" y="184" width="4" height="4" rx="1"/><rect class="bar" x="98" y="178" width="4" height="10" rx="1"/><rect class="bar" x="104" y="184" width="4" height="4" rx="1"/><rect class="bar" x="110" y="160" width="4" height="28" rx="1"/><rect class="bar" x="116" y="184" width="4" height="4" rx="1"/><rect class="bar" x="122" y="184" width="4" height="4" rx="1"/><rect class="bar" x="128" y="184" width="4" height="4" rx="1"/><rect class="bar" x="134" y="184" width="4" height="4" rx="1"/><rect class="bar" x="140" y="184" width="4" height="4" rx="1"/><rect class="bar" x="146" y="184" width="4" height="4" rx="1"/><rect class="bar" x="152" y="184" width="4" height="4" rx="1"/><rect class="bar" x="158" y="154" width="4" height="34" rx="1"/><rect class="bar" x="164" y="178" width="4" height="10" rx="1"/><rect class="bar" x="170" y="154" width="4" height="34" rx="1"/><rect class="bar" x="176" y="160" width="4" height="28" rx="1"/><rect class="bar" x="182" y="154" width="4" height="34" rx="1"/><rect class="bar" x="188" y="154" width="4" height="34" rx="1"/><rect class="bar" x="194" y="166" width="4" height="22" rx="1"/><rect class="bar" x="200" y="178" width="4" height="10" rx="1"/><rect class="bar" x="206" y="184" width="4" height="4" rx="1"/>
+<rect class="bar" x="32" y="184" width="4" height="4" rx="1"/><rect class="bar" x="38" y="184" width="4" height="4" rx="1"/><rect class="bar" x="44" y="154" width="4" height="34" rx="1"/><rect class="bar" x="50" y="154" width="4" height="34" rx="1"/><rect class="bar" x="56" y="154" width="4" height="34" rx="1"/><rect class="bar" x="62" y="154" width="4" height="34" rx="1"/><rect class="bar" x="68" y="154" width="4" height="34" rx="1"/><rect class="bar" x="74" y="154" width="4" height="34" rx="1"/><rect class="bar" x="80" y="154" width="4" height="34" rx="1"/><rect class="bar" x="86" y="172" width="4" height="16" rx="1"/><rect class="bar" x="92" y="184" width="4" height="4" rx="1"/><rect class="bar" x="98" y="178" width="4" height="10" rx="1"/><rect class="bar" x="104" y="184" width="4" height="4" rx="1"/><rect class="bar" x="110" y="160" width="4" height="28" rx="1"/><rect class="bar" x="116" y="184" width="4" height="4" rx="1"/><rect class="bar" x="122" y="184" width="4" height="4" rx="1"/><rect class="bar" x="128" y="184" width="4" height="4" rx="1"/><rect class="bar" x="134" y="184" width="4" height="4" rx="1"/><rect class="bar" x="140" y="184" width="4" height="4" rx="1"/><rect class="bar" x="146" y="184" width="4" height="4" rx="1"/><rect class="bar" x="152" y="184" width="4" height="4" rx="1"/><rect class="bar" x="158" y="154" width="4" height="34" rx="1"/><rect class="bar" x="164" y="178" width="4" height="10" rx="1"/><rect class="bar" x="170" y="154" width="4" height="34" rx="1"/><rect class="bar" x="176" y="160" width="4" height="28" rx="1"/><rect class="bar" x="182" y="154" width="4" height="34" rx="1"/><rect class="bar" x="188" y="154" width="4" height="34" rx="1"/><rect class="bar" x="194" y="166" width="4" height="22" rx="1"/><rect class="bar" x="200" y="178" width="4" height="10" rx="1"/><rect class="bar" x="206" y="178" width="4" height="10" rx="1"/>
 
 <text x="32" y="210" class="small">
-Repos 34 · Stars 3 · Followers 6 · Following 9 · Commits(30d) 325 · Total 396
+Repos 34 · Stars 3 · Followers 6 · Following 9 · Commits(30d) 326 · Total 397
 </text>
 </svg>
